@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de notificação - SINAN</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <header>
+    <h1>SINAN - Ficha de Notificação/Conclusão</h1>
+    <nav>
+      <a href="index.html">Consulta</a>
+      <a href="cadastro.html" class="ativo">Nova notificação</a>
+    </nav>
+  </header>
+  <main>
+    <h2 id="titulo">Nova notificação</h2>
+    <div id="faixa" hidden></div>
+    <p class="dica"><span style="color:var(--erro)">*</span> campos obrigatórios. Alguns campos passam a ser obrigatórios conforme as respostas
+      (idade, gestante, residência, conclusão e local provável de infecção).</p>
+    <form id="formulario" novalidate></form>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/campos.js"></script>
+  <script src="js/cadastro.js"></script>
+</body>
+</html>
+
