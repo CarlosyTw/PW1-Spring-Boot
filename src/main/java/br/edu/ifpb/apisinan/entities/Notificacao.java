@@ -2,6 +2,16 @@ package br.edu.ifpb.apisinan.entities;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
 import br.edu.ifpb.apisinan.entities.enums.CasoAutoctone;
 import br.edu.ifpb.apisinan.entities.enums.ClassificacaoFinal;
 import br.edu.ifpb.apisinan.entities.enums.CriterioConfirmacao;
@@ -15,81 +25,148 @@ import br.edu.ifpb.apisinan.entities.enums.TipoNotificacao;
 import br.edu.ifpb.apisinan.entities.enums.UnidadeIdade;
 import br.edu.ifpb.apisinan.entities.enums.Zona;
 
+@Entity
+@Table(name = "notificacao", uniqueConstraints = @UniqueConstraint(name = "uk_notificacao_numero", columnNames = "numero"))
 public class Notificacao {
  // Atributos (Seguindo tabela do sinan)
   // Identificação
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(nullable = false, length = 20)
   private String numero;
 
   // Dados gerais
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private TipoNotificacao tipoNotificacao;
+  @Column(name = "agravo", length = 120)
   private String agravo;
+  @Column(length = 10)
   private String codigoCid10;
+  @Column(name = "data_notificacao")
   private LocalDate dataNotificacao;
+  @Column(length = 2)
   private String ufNotificacao;
+  @Column(length = 100)
   private String municipioNotificacao;
+  @Column(length = 7)
   private String codigoIbgeMunicipioNotificacao;
+  @Column(length = 150)
   private String unidadeSaude;
+  @Column(length = 20)
   private String codigoUnidadeSaude;
   private LocalDate dataPrimeirosSintomas;
 
   // Notificação individual
+  @Column(name = "nome_paciente", length = 150)
   private String nomePaciente;
+  @Column(name = "data_nascimento")
   private LocalDate dataNascimento;
   private Integer idade;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private UnidadeIdade unidadeIdade;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private Sexo sexo;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private Gestante gestante;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private RacaCor racaCor;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private Escolaridade escolaridade;
+  @Column(length = 15)
   private String cartaoSus;
+  @Column(name = "nome_mae", length = 150)
   private String nomeMae;
 
   // Dados de residência
+  @Column(length = 2)
   private String ufResidencia;
+  @Column(length = 100)
   private String municipioResidencia;
+  @Column(length = 7)
   private String codigoIbgeMunicipioResidencia;
+  @Column(length = 100)
   private String distritoResidencia;
+  @Column(length = 100)
   private String bairroResidencia;
+  @Column(length = 150)
   private String logradouro;
+  @Column(length = 20)
   private String codigoLogradouro;
+  @Column(length = 20)
   private String numeroResidencia;
+  @Column(length = 100)
   private String complemento;
+  @Column(length = 50)
   private String geoCampo1;
+  @Column(length = 50)
   private String geoCampo2;
+  @Column(length = 150)
   private String pontoReferencia;
+  @Column(length = 9)
   private String cep;
+  @Column(length = 20)
   private String telefone;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private Zona zona;
+  @Column(length = 60)
   private String paisResidencia;
 
   // Conclusão
   private LocalDate dataInvestigacao;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private ClassificacaoFinal classificacaoFinal;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private CriterioConfirmacao criterioConfirmacao;
 
   // Local provável da fonte de infecção
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private CasoAutoctone casoAutoctone;
+  @Column(length = 2)
   private String ufInfeccao;
+  @Column(length = 60)
   private String paisInfeccao;
+  @Column(length = 100)
   private String municipioInfeccao;
+  @Column(length = 7)
   private String codigoIbgeMunicipioInfeccao;
+  @Column(length = 100)
   private String distritoInfeccao;
+  @Column(length = 100)
   private String bairroInfeccao;
 
   // Fechamento
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private DoencaTrabalho doencaTrabalho;
+  @Enumerated(EnumType.STRING)
+  @Column(length = 40)
   private EvolucaoCaso evolucaoCaso;
   private LocalDate dataObito;
   private LocalDate dataEncerramento;
 
   // Observações
+  @Column(length = 2000)
   private String observacoes;
 
   // Investigador
+  @Column(length = 150)
   private String investigadorUnidade;
+  @Column(length = 20)
   private String investigadorCodigoUnidade;
+  @Column(length = 150)
   private String investigadorNome;
+  @Column(length = 100)
   private String investigadorFuncao;
 
   // Construtores
@@ -669,3 +746,4 @@ public class Notificacao {
   }
 
 }
+
