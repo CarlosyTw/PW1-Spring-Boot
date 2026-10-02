@@ -1,0 +1,76 @@
+package br.edu.ifpb.apisinan.dto;
+
+import java.time.LocalDate;
+
+import br.edu.ifpb.apisinan.entities.enums.CasoAutoctone;
+import br.edu.ifpb.apisinan.entities.enums.ClassificacaoFinal;
+import br.edu.ifpb.apisinan.entities.enums.CriterioConfirmacao;
+import br.edu.ifpb.apisinan.entities.enums.DoencaTrabalho;
+import br.edu.ifpb.apisinan.entities.enums.Escolaridade;
+import br.edu.ifpb.apisinan.entities.enums.EvolucaoCaso;
+import br.edu.ifpb.apisinan.entities.enums.Gestante;
+import br.edu.ifpb.apisinan.entities.enums.RacaCor;
+import br.edu.ifpb.apisinan.entities.enums.Sexo;
+import br.edu.ifpb.apisinan.entities.enums.TipoNotificacao;
+import br.edu.ifpb.apisinan.entities.enums.UnidadeIdade;
+import br.edu.ifpb.apisinan.entities.enums.Zona;
+
+public record NotificacaoResponse(
+    Long id,
+    String numero,
+    TipoNotificacao tipoNotificacao,
+    String agravo,
+    String codigoCid10,
+    LocalDate dataNotificacao,
+    String ufNotificacao,
+    String municipioNotificacao,
+    String codigoIbgeMunicipioNotificacao,
+    String unidadeSaude,
+    String codigoUnidadeSaude,
+    LocalDate dataPrimeirosSintomas,
+    String nomePaciente,
+    LocalDate dataNascimento,
+    Integer idade,
+    UnidadeIdade unidadeIdade,
+    Sexo sexo,
+    Gestante gestante,
+    RacaCor racaCor,
+    Escolaridade escolaridade,
+    String cartaoSus,
+    String nomeMae,
+    String ufResidencia,
+    String municipioResidencia,
+    String codigoIbgeMunicipioResidencia,
+    String distritoResidencia,
+    String bairroResidencia,
+    String logradouro,
+    String codigoLogradouro,
+    String numeroResidencia,
+    String complemento,
+    String geoCampo1,
+    String geoCampo2,
+    String pontoReferencia,
+    String cep,
+    String telefone,
+    Zona zona,
+    String paisResidencia,
+    LocalDate dataInvestigacao,
+    ClassificacaoFinal classificacaoFinal,
+    CriterioConfirmacao criterioConfirmacao,
+    CasoAutoctone casoAutoctone,
+    String ufInfeccao,
+    String paisInfeccao,
+    String municipioInfeccao,
+    String codigoIbgeMunicipioInfeccao,
+    String distritoInfeccao,
+    String bairroInfeccao,
+    DoencaTrabalho doencaTrabalho,
+    EvolucaoCaso evolucaoCaso,
+    LocalDate dataObito,
+    LocalDate dataEncerramento,
+    String observacoes,
+    String investigadorUnidade,
+    String investigadorCodigoUnidade,
+    String investigadorNome,
+    String investigadorFuncao) { }
+
