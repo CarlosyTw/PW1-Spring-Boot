@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta de notificações - SINAN</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <header>
+    <h1>SINAN - Ficha de Notificação/Conclusão</h1>
+    <nav>
+      <a href="index.html" class="ativo">Consulta</a>
+      <a href="cadastro.html">Nova notificação</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Consulta de notificações</h2>
+
+    <form id="filtros">
+      <fieldset>
+        <legend>Filtros</legend>
+        <div class="grade">
+          <div class="campo"><label for="numero">Nº da notificação</label><input id="numero" name="numero"></div>
+          <div class="campo"><label for="agravo">Agravo/doença</label><input id="agravo" name="agravo"></div>
+          <div class="campo"><label for="nomePaciente">Nome do paciente</label><input id="nomePaciente" name="nomePaciente"></div>
+          <div class="campo"><label for="nomeMae">Nome da mãe</label><input id="nomeMae" name="nomeMae"></div>
+          <div class="campo"><label for="dataNotificacaoInicio">Notificação a partir de</label><input id="dataNotificacaoInicio" name="dataNotificacaoInicio" type="date"></div>
+          <div class="campo"><label for="dataNotificacaoFim">Notificação até</label><input id="dataNotificacaoFim" name="dataNotificacaoFim" type="date"></div>
+          <div class="campo"><label for="sexo">Sexo</label><select id="sexo" name="sexo"></select></div>
+          <div class="campo"><label for="ufResidencia">UF de residência</label><input id="ufResidencia" name="ufResidencia" maxlength="2"></div>
+          <div class="campo"><label for="municipioResidencia">Município de residência</label><input id="municipioResidencia" name="municipioResidencia"></div>
+          <div class="campo"><label for="classificacaoFinal">Classificação final</label><select id="classificacaoFinal" name="classificacaoFinal"></select></div>
+          <div class="campo"><label for="evolucaoCaso">Evolução do caso</label><select id="evolucaoCaso" name="evolucaoCaso"></select></div>
+          <div class="campo check">
+            <input id="duplicadas" name="duplicadas" type="checkbox" value="true">
+            <label for="duplicadas">Somente notificações duplicadas</label>
+          </div>
+        </div>
+        <div class="acoes">
+          <button type="submit">Consultar</button>
+          <button type="button" class="sec" id="limpar">Limpar filtros</button>
+          <a class="botao sec" href="cadastro.html">Nova notificação</a>
+        </div>
+      </fieldset>
+    </form>
+
+    <div id="faixa" hidden></div>
+    <p id="contagem" class="dica"></p>
+    <div class="tabela-rolagem">
+      <table>
+        <thead>
+          <tr>
+            <th>Nº</th><th>Agravo</th><th>Data notif.</th><th>Paciente</th><th>Nascimento</th><th>Mãe</th>
+            <th>Sexo</th><th>Residência</th><th>Classificação</th><th>Evolução</th><th>Alterar</th><th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody id="corpo"></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/campos.js"></script>
+  <script src="js/consulta.js"></script>
+</body>
+</html>
+
